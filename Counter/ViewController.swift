@@ -9,19 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var counter: UILabel!
-    @IBOutlet weak var reset: UIButton!
-    @IBOutlet weak var counterButton: UIButton!
+    @IBOutlet private weak var counter: UILabel!
+    @IBOutlet private weak var reset: UIButton!
+    @IBOutlet private weak var counterButton: UIButton!
     
     
-    @IBOutlet weak var plus: UIButton!
+    @IBOutlet private weak var plus: UIButton!
     
-    @IBOutlet weak var minus: UIButton!
+    @IBOutlet private weak var minus: UIButton!
     
-    @IBOutlet weak var history: UITextView!
+    @IBOutlet private weak var history: UITextView!
     
     
-    @IBOutlet weak var scroll: UIScrollView!
+    @IBOutlet private weak var scroll: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,45 +30,45 @@ class ViewController: UIViewController {
 
 
     
-    var z: Int = 0
+    private var counterValue: Int = 0
     
-    let date = Date().description(with: .current)
+    private let date = Date().description(with: .current)
     
 
     
     
-    @IBAction func pressButton(_ sender: Any){
+    @IBAction private func pressButton(_ sender: Any){
         print("нажатие")
         print (date)
-        z += 1
-        print (z)
-        self.counter.text = "Значение счётчика:  \(z)"
+        counterValue += 1
+        print (counterValue)
+        self.counter.text = "Значение счётчика:  \(counterValue)"
         self.history.text += "\n \(date): \nзначение изменено на -1/+1\n"
         }
     
     
-    @IBAction func plusOne(_ sender: Any) {
-        z += 1
-        self.counter.text = "Значение счётчика: \(z)"
+    @IBAction private func plusOne(_ sender: Any) {
+        counterValue += 1
+        self.counter.text = "Значение счётчика: \(counterValue)"
         self.history.text += "\n \(date): \nзначение изменено на -1/+1\n"
     }
     
-    @IBAction func minusOne(_ sender: Any) {
-        z -= 1 
-        self.counter.text = "Значение счётчика: \(z)"
+    @IBAction private func minusOne(_ sender: Any) {
+        counterValue -= 1
+        self.counter.text = "Значение счётчика: \(counterValue)"
         self.history.text += "\n \(date): \nзначение изменено на -1/+1\n"
-        if z <= 0 {
-            z = 0
+        if counterValue <= 0 {
+            counterValue = 0
             self.counter.text = "Значение счётчика: - "
             self.history.text += "\n \(date) Попытка уменьшить значение счётчика ниже 0 \n"
         }
     }
     
-    @IBAction func reset_1(_ sender: Any) {
+    @IBAction private func reset_1(_ sender: Any) {
         print("сброс")
-        z = 0
-        print (z)
-        self.counter.text = "Значение счётчика: \(z)"
+        counterValue = 0
+        print (counterValue)
+        self.counter.text = "Значение счётчика: \(counterValue)"
         self.history.text = "\n Значение сброшено\n"
         }
     
